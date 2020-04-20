@@ -9,12 +9,21 @@ public class ReflectionSample {
 			Class<?> dogClass = Class.forName("reflection.Dog");
 			var dogObject = dogClass.getDeclaredConstructor().newInstance();
 
-			// ベースクラスのメソッドは見つからない
-//			var callMethod = dogObject.getClass().getDeclaredMethod("call");
-//			System.out.print(callMethod.invoke(dogObject));
+			// getDeclaredMethod()はサブクラスのメソッド一覧から検索する
+			// var callMethod = dogObject.getClass().getDeclaredMethod("call");
+
+			// getMethod()はベースクラスのメソッドを含む一覧から検索する
+			var callMethod = dogObject.getClass().getMethod("call");
+			callMethod.invoke(dogObject);
 
 			var shoutMethod = dogObject.getClass().getDeclaredMethod("shout");
-			System.out.print(shoutMethod.invoke(dogObject));
+			shoutMethod.invoke(dogObject);
+
+			Class<?> personClass = Class.forName("reflection.Person");
+			var personObject = personClass.getDeclaredConstructor().newInstance();
+
+			var personCallMethod = personObject.getClass().getMethod("callName", Animal.class);
+			personCallMethod.invoke(personObject, dogObject);
 
 		} catch(ReflectiveOperationException e) {
 

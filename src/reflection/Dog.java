@@ -1,8 +1,12 @@
 package reflection;
 
-public class Dog extends Animal{
+public class Dog extends BaseAnimal{
 
 	private int age;
+
+	public Dog() {
+		super("犬");
+	}
 
 	public int getAge() {
 		return age;
@@ -13,7 +17,7 @@ public class Dog extends Animal{
 	}
 
 	@Override
-	public String shout() {
-		return "BBB";
+	public void shout() {
+		System.out.print("BBB");
 	}
 }
