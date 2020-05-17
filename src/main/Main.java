@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import anonymous.AnonymousSample;
 import reflection.ReflectionSample;
 
 public class Main extends JFrame {
@@ -34,7 +35,8 @@ public class Main extends JFrame {
 		setButtonClickAction(button1, reflectionListener());
 		panel.add(button1);
 
-		JButton button2 = createJButton("ボタン2");
+		JButton button2 = createJButton("匿名クラス");
+		setButtonClickAction(button2, anonymousListener());
 		panel.add(button2);
 
 	    Container contentPane = getContentPane();
@@ -59,6 +61,16 @@ public class Main extends JFrame {
 		      @Override
 		      public void actionPerformed(ActionEvent e) {
 		    	  ReflectionSample sample = new ReflectionSample();
+		    	  sample.execute();
+		      }
+		    };
+	}
+
+	private ActionListener anonymousListener() {
+		return new ActionListener() {
+		      @Override
+		      public void actionPerformed(ActionEvent e) {
+		    	  AnonymousSample sample = new AnonymousSample();
 		    	  sample.execute();
 		      }
 		    };
