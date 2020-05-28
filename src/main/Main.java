@@ -9,8 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import QRCode.QRCodeSample;
 import anonymous.AnonymousSample;
 import collection.CollectionSample;
+import date.DateSample;
 import reflection.ReflectionSample;
 
 public class Main extends JFrame {
@@ -43,6 +45,14 @@ public class Main extends JFrame {
 		setButtonClickAction(button3, collectionListener());
 		panel.add(button3);
 
+		JButton button4 = createJButton("QRコード");
+		setButtonClickAction(button4, qrCodeListener());
+		panel.add(button4);
+
+		JButton button5 = createJButton("日付");
+		setButtonClickAction(button5, dateListener());
+		panel.add(button5);
+
 	    Container contentPane = getContentPane();
 	    contentPane.add(panel, BorderLayout.CENTER);
 	}
@@ -64,7 +74,7 @@ public class Main extends JFrame {
 		return new ActionListener() {
 		      @Override
 		      public void actionPerformed(ActionEvent e) {
-		    	  ReflectionSample sample = new ReflectionSample();
+		    	  var sample = new ReflectionSample();
 		    	  sample.execute();
 		      }
 		    };
@@ -74,7 +84,7 @@ public class Main extends JFrame {
 		return new ActionListener() {
 		      @Override
 		      public void actionPerformed(ActionEvent e) {
-		    	  AnonymousSample sample = new AnonymousSample();
+		    	  var sample = new AnonymousSample();
 		    	  sample.execute();
 		      }
 		    };
@@ -84,7 +94,27 @@ public class Main extends JFrame {
 		return new ActionListener() {
 		      @Override
 		      public void actionPerformed(ActionEvent e) {
-		    	  CollectionSample sample = new CollectionSample();
+		    	  var sample = new CollectionSample();
+		    	  sample.execute();
+		      }
+		    };
+	}
+
+	private ActionListener qrCodeListener() {
+		return new ActionListener() {
+		      @Override
+		      public void actionPerformed(ActionEvent e) {
+		    	  var sample = new QRCodeSample();
+		    	  sample.execute();
+		      }
+		    };
+	}
+
+	private ActionListener dateListener() {
+		return new ActionListener() {
+		      @Override
+		      public void actionPerformed(ActionEvent e) {
+		    	  var sample = new DateSample();
 		    	  sample.execute();
 		      }
 		    };
