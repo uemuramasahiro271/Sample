@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +15,7 @@ import QRCode.QRCodeSample;
 import anonymous.AnonymousSample;
 import collection.CollectionSample;
 import date.DateSample;
+import exception.ExceptionSample;
 import reflection.ReflectionSample;
 
 public class Main extends JFrame {
@@ -33,28 +36,26 @@ public class Main extends JFrame {
 
 		JPanel panel = new JPanel();
 
-		JButton button1 = createJButton("リフレクション");
-		setButtonClickAction(button1, reflectionListener());
-		panel.add(button1);
+		Map<String, ActionListener> map = new HashMap<String, ActionListener>();
+		map.put("リフレクション", reflectionListener());
+		map.put("匿名クラス", anonymousListener());
+		map.put("コレクション", collectionListener());
+		map.put("QRコード", qrCodeListener());
+		map.put("日付", dateListener());
+		map.put("例外", exceptionListener());
 
-		JButton button2 = createJButton("匿名クラス");
-		setButtonClickAction(button2, anonymousListener());
-		panel.add(button2);
-
-		JButton button3 = createJButton("コレクション");
-		setButtonClickAction(button3, collectionListener());
-		panel.add(button3);
-
-		JButton button4 = createJButton("QRコード");
-		setButtonClickAction(button4, qrCodeListener());
-		panel.add(button4);
-
-		JButton button5 = createJButton("日付");
-		setButtonClickAction(button5, dateListener());
-		panel.add(button5);
+		setupButton(panel, map);
 
 	    Container contentPane = getContentPane();
 	    contentPane.add(panel, BorderLayout.CENTER);
+	}
+
+	private void setupButton(JPanel panel, Map<String, ActionListener> map) {
+		for(var entry: map.entrySet()) {
+			JButton button = createJButton(entry.getKey());
+			setButtonClickAction(button, entry.getValue());
+			panel.add(button);
+		}
 	}
 
 	private JButton createJButton(String text) {
@@ -115,6 +116,16 @@ public class Main extends JFrame {
 		      @Override
 		      public void actionPerformed(ActionEvent e) {
 		    	  var sample = new DateSample();
+		    	  sample.execute();
+		      }
+		    };
+	}
+
+	private ActionListener exceptionListener() {
+		return new ActionListener() {
+		      @Override
+		      public void actionPerformed(ActionEvent e) {
+		    	  var sample = new ExceptionSample();
 		    	  sample.execute();
 		      }
 		    };
