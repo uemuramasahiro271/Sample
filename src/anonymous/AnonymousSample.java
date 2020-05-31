@@ -10,7 +10,9 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class AnonymousSample {
+import common.ISample;
+
+public class AnonymousSample implements ISample {
 
 	public void execute() {
 

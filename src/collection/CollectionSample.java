@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class CollectionSample {
+import common.ISample;
+
+public class CollectionSample implements ISample {
 
 	public void execute() {
 

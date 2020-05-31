@@ -6,7 +6,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class DateSample {
+import common.ISample;
+
+public class DateSample implements ISample {
 
 	public void execute() {
 

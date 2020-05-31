@@ -1,6 +1,8 @@
 package reflection;
 
-public class ReflectionSample {
+import common.ISample;
+
+public class ReflectionSample implements ISample {
 
 	public void execute() {
 

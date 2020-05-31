@@ -13,7 +13,9 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
-public class QRCodeSample {
+import common.ISample;
+
+public class QRCodeSample implements ISample {
 
 	public void execute() {
 
