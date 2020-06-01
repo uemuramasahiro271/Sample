@@ -18,6 +18,7 @@ import common.ISample;
 import date.DateSample;
 import exception.ExceptionSample;
 import reflection.ReflectionSample;
+import test1.Test1;
 
 public class Main extends JFrame {
 
@@ -49,6 +50,10 @@ public class Main extends JFrame {
 
 	    Container contentPane = getContentPane();
 	    contentPane.add(panel, BorderLayout.CENTER);
+
+	    // モジュールシステム テスト
+	    Test1 test1 = new Test1();
+	    test1.test();
 	}
 
 	private void setupButton(JPanel panel, Map<String, ISample> map) {
