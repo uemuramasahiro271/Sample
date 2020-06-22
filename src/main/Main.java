@@ -15,6 +15,7 @@ import QRCode.QRCodeSample;
 import anonymous.AnonymousSample;
 import collection.CollectionSample;
 import common.ISample;
+import csv.OutputCsvSample;
 import date.DateSample;
 import exception.ExceptionSample;
 import reflection.ReflectionSample;
@@ -45,6 +46,7 @@ public class Main extends JFrame {
 		map.put("QRコード", new QRCodeSample());
 		map.put("日付", new DateSample());
 		map.put("例外", new ExceptionSample());
+		map.put("Csv出力", new OutputCsvSample());
 
 		setupButton(panel, map);
 
